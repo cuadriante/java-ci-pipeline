@@ -2,7 +2,7 @@
 <project name="java-ci-pipeline" default="all">
   
   
-  <property file="java-ci-pipeline.properties"/>
+  <property file="build.properties"/>
   <!-- Uncomment the following property if no tests compilation is needed -->
   <!-- 
   <property name="skip.tests" value="true"/>
@@ -15,7 +15,6 @@
   <property name="compiler.args" value=""/>
   <property name="compiler.max.memory" value="700m"/>
   <patternset id="ignored.files">
-    <exclude name="**/*.hprof/**"/>
     <exclude name="**/*.pyc/**"/>
     <exclude name="**/*.pyo/**"/>
     <exclude name="**/*.rbc/**"/>
@@ -136,10 +135,13 @@
   <property name="javac2.home" value="${idea.home}/lib"/>
   <path id="javac2.classpath">
     <fileset dir="${javac2.home}">
-      <include name="javac2.jar"/>
       <include name="jdom.jar"/>
       <include name="asm-all*.jar"/>
       <include name="forms-*.jar"/>
+      <include name="forms_rt.jar"/>
+    </fileset>
+    <fileset dir="${idea.home}/plugins/java/lib">
+      <include name="javac2.jar"/>
     </fileset>
   </path>
   <target name="register.custom.compilers">
@@ -237,31 +239,5 @@
   
   <target name="build.modules" depends="init, clean, compile.module.java-ci-pipeline" description="build all modules"/>
   
-  <target name="init.artifacts">
-    <property name="artifacts.temp.dir" value="${basedir}/__artifacts_temp"/>
-    <property name="artifact.output.java-ci-pipeline:jar" value="${basedir}/out/artifacts/java_ci_pipeline_jar"/>
-    <mkdir dir="${artifacts.temp.dir}"/>
-    <property name="temp.jar.path.java-ci-pipeline.jar" value="${artifacts.temp.dir}/java-ci-pipeline.jar"/>
-  </target>
-  
-  <target name="artifact.java-ci-pipeline:jar" depends="init.artifacts, compile.module.java-ci-pipeline" description="Build &#39;java-ci-pipeline:jar&#39; artifact">
-    <property name="artifact.temp.output.java-ci-pipeline:jar" value="${artifacts.temp.dir}/java_ci_pipeline_jar"/>
-    <mkdir dir="${artifact.temp.output.java-ci-pipeline:jar}"/>
-    <jar destfile="${temp.jar.path.java-ci-pipeline.jar}" duplicate="preserve" filesetmanifest="mergewithoutmain">
-      <zipfileset dir="${java-ci-pipeline.output.dir}"/>
-    </jar>
-    <copy file="${temp.jar.path.java-ci-pipeline.jar}" tofile="${artifact.temp.output.java-ci-pipeline:jar}/java-ci-pipeline.jar"/>
-  </target>
-  
-  <target name="build.all.artifacts" depends="artifact.java-ci-pipeline:jar" description="Build all artifacts">
-    <mkdir dir="${artifact.output.java-ci-pipeline:jar}"/>
-    <copy todir="${artifact.output.java-ci-pipeline:jar}">
-      <fileset dir="${artifact.temp.output.java-ci-pipeline:jar}"/>
-    </copy>
-    
-    <!-- Delete temporary files -->
-    <delete dir="${artifacts.temp.dir}"/>
-  </target>
-  
-  <target name="all" depends="build.modules, build.all.artifacts" description="build all"/>
+  <target name="all" depends="build.modules" description="build all"/>
 </project>
