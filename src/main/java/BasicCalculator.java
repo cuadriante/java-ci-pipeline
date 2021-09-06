@@ -8,7 +8,7 @@ public class BasicCalculator{
     }
 
     public int subtraction(int a, int b){
-        int result = a - b;
+        int result = a - b;;
         return result;
     }
 
@@ -17,11 +17,11 @@ public class BasicCalculator{
         return result;
     }
 
-    public int division(int a, int b){
+    public double division(int a, int b){
         if (b == 0) {
             throw new IllegalArgumentException("Math Error: Cannot divide by zero");
         } else {
-            int result = a / b;
+            double result = a / b;
             return result;
         }
     }
@@ -36,11 +36,11 @@ public class BasicCalculator{
     }
 
 
-    public int sqrt(int a) {
+    public double sqrt(int a) {
         if (a < 0) {
             throw new IllegalArgumentException("Math Error: Undefined");
         } else {
-            int result = (int)Math.sqrt(a);
+            double result = Math.sqrt(a);
             return result;
         }
     }

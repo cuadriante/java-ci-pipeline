@@ -8,12 +8,13 @@ public class Main {
         System.out.println("Indique la operacion (+,-,x,^,/,sqrt)");
 
         operacion = scanner.nextLine();
-        if (operacion == "sqrt"){
+        double result = 0;
+
+        if (operacion.equals("sqrt")){
             int num;
             System.out.println("Digite un numero");
             num = Integer.parseInt(scanner.nextLine());
-            calculator.sqrt(num);
-
+            result = calculator.sqrt(num);
         }
         else{
             int num1;
@@ -23,25 +24,26 @@ public class Main {
             System.out.println("Digite segundo numero");
             num2 = Integer.parseInt(scanner.nextLine());
 
-            if(operacion == "+"){
-                calculator.addition(num1,num2);
+            if(operacion.equals("+")){
+                result = calculator.addition(num1,num2);
 
-            }else if(operacion == "-"){
-                calculator.subtraction(num1,num2);
+            }else if(operacion.equals("-")){
+                result = calculator.subtraction(num1,num2);
 
-            }else if(operacion == "x"){
-                calculator.multiplication(num1,num2);
+            }else if(operacion.equals("x")){
+                result = calculator.multiplication(num1,num2);
 
-            } else if(operacion == "^"){
-                calculator.power(num1,num2);
+            } else if(operacion.equals("^")){
+                result = calculator.power(num1,num2);
 
-            }else if(operacion == "/") {
-                calculator.division(num1, num2);
+            }else if(operacion.equals("/")) {
+                result = calculator.division(num1, num2);
 
+            } else {
+                System.out.println("Invalid operation");
             }
         }
 
-
-
+        System.out.println(result);
     }
 }
