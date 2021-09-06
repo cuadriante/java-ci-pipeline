@@ -18,22 +18,30 @@ public class BasicCalculator{
     }
 
     public int division(int a, int b){
-        int result = a / b;
-        return result;
+        if (b == 0) {
+            throw new IllegalArgumentException("Math Error: Cannot divide by zero");
+        } else {
+            int result = a / b;
+            return result;
+        }
     }
 
     public int power(int a, int b){
-        int result = (int)Math.pow(a, b);
-        return result;
+        if (a==0 && b==0) {
+            throw new IllegalArgumentException("Math Error: Undefined");
+        } else {
+            int result = (int)Math.pow(a, b);
+            return result;
+        }
     }
 
-    public int remainder(int a, int b){
-        int result = a % b;
-        return result;
-    }
 
     public int sqrt(int a) {
-        int result = (int)Math.sqrt(a);
-        return result;
+        if (a < 0) {
+            throw new IllegalArgumentException("Math Error: Undefined");
+        } else {
+            int result = (int)Math.sqrt(a);
+            return result;
+        }
     }
 }

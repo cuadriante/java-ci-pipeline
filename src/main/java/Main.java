@@ -5,7 +5,7 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         BasicCalculator calculator = new BasicCalculator();
         String operacion;
-        System.out.println("Indique la operacion (+,-,x,^,/,%,sqrt)");
+        System.out.println("Indique la operacion (+,-,x,^,/,sqrt)");
 
         operacion = scanner.nextLine();
         if (operacion == "sqrt"){
@@ -38,8 +38,6 @@ public class Main {
             }else if(operacion == "/") {
                 calculator.division(num1, num2);
 
-            }else if(operacion == "%"){
-                calculator.remainder(num1,num2);
             }
         }
 
