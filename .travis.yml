@@ -1,0 +1,11 @@
+language: java
+
+before_script:
+  - install: ant deps
+apt_packages:
+  - ant
+
+script:
+  ant Main
+  #ant TestBasicCalculator
+  #git push

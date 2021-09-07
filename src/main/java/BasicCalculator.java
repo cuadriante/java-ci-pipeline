@@ -3,8 +3,7 @@
 
 public class BasicCalculator{
     public int addition(int a, int b) {
-        int result = a + b;
-        return result;
+        return a + b;
     }
 
     public int subtraction(int a, int b){
@@ -13,16 +12,14 @@ public class BasicCalculator{
     }
 
     public int multiplication(int a, int b){
-        int result = a * b;
-        return result;
+        return a * b;
     }
 
     public double division(int a, int b){
         if (b == 0) {
             throw new IllegalArgumentException("Math Error: Cannot divide by zero");
         } else {
-            double result = a / b;
-            return result;
+            return a / b;
         }
     }
 
@@ -30,18 +27,15 @@ public class BasicCalculator{
         if (a==0 && b==0) {
             throw new IllegalArgumentException("Math Error: Undefined");
         } else {
-            int result = (int)Math.pow(a, b);
-            return result;
+            return (int)Math.pow(a, b);
         }
     }
-
 
     public double sqrt(int a) {
         if (a < 0) {
             throw new IllegalArgumentException("Math Error: Undefined");
         } else {
-            double result = Math.sqrt(a);
-            return result;
+            return Math.sqrt(a);
         }
     }
 }
