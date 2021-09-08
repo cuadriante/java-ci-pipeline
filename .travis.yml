@@ -1,12 +1,14 @@
-language: java
-os: windows
+dist: xenial
 
-#before_script:
-install: ant deps
-apt_packages:
-  - ant
+language: java
+
+before_script:
+  - sudo apt-get install ant-optional
+
+addons:
+  apt:
+    packages:
+      ant
 
 script:
-  ant Main
-  ant TestBasicCalculator
-  git push
+  - ant main
