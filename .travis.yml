@@ -1,4 +1,5 @@
 language: java
+os: windows
 
 #before_script:
 install: ant deps
