@@ -31,7 +31,7 @@
             <formatter type="plain" usefile="false"/>
             <classpath location="lib\hamcrest-library-1.3.jar"/>
             <classpath location="lib\hamcrest-core-1.3.jar"/>
-            <classpath location="lib\junit-4.13.2.jar"/>
+
             <classpath>
                 <path refid="classpath"/>
                 <pathelement location="${build.dir}"/>
